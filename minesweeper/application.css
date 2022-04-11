@@ -45,5 +45,5 @@ p {
 }
 
 .revealed {
-    border-width: 0px;
+    border-style: inset;
 }

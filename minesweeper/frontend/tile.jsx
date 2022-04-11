@@ -44,6 +44,7 @@ export default class TileComponent extends React.Component {
     }
 
     handleClick(e) {
+        console.log(this.state.tile);
         let flagged = false;
         if(e.altKey) flagged = true;
 
