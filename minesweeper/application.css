@@ -43,3 +43,7 @@ p {
     position: relative;
     text-align: center;
 }
+
+.revealed {
+    border-width: 0px;
+}

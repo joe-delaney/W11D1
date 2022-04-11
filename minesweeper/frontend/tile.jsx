@@ -6,27 +6,47 @@ export default class TileComponent extends React.Component {
         this.state = {
             tile: props.tile
         }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     render() {
-        return <div className="tile">{this.getString()}</div>
+        let className = "tile";
+
+        if(this.state.tile.explored) {
+            if(!this.state.tile.bombed) {
+                className += " revealed";
+            }
+        }
+
+        return <div className={className} onClick={this.handleClick}>{this.getString()}</div>
     }
 
     getString() {
-        if(this.state.tile.bombed) {
-            return "💣"
-        } else if(this.state.tile.flagged) {
-            return "🚩";
-        } else if(this.state.tile.explored) {
-            let count = this.state.tile.adjacentBombCount();
-            if(count > 0) {
-                return count;
+        if (this.state.tile.explored) {
+            if (this.state.tile.bombed) {
+                return "💣"
             } else {
-                return "";
+                let count = this.state.tile.adjacentBombCount();
+                if (count > 0) {
+                    return count.toString();
+                } else {
+                    return "";
+                }
             }
         } else {
-            return "";
+            if (this.state.tile.flagged) {
+                return "🚩";
+            }  else {
+                return "";
+            }
         }
+    }
 
+    handleClick(e) {
+        let flagged = false;
+        if(e.altKey) flagged = true;
+
+        this.props.updateGame(this.state.tile, flagged);
     }
 }
