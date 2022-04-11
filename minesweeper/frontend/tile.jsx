@@ -3,9 +3,6 @@ import React from "react";
 export default class TileComponent extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            tile: props.tile
-        }
 
         this.handleClick = this.handleClick.bind(this);
     }
@@ -13,8 +10,8 @@ export default class TileComponent extends React.Component {
     render() {
         let className = "tile";
 
-        if(this.state.tile.explored) {
-            if(!this.state.tile.bombed) {
+        if(this.props.tile.explored) {
+            if(!this.props.tile.bombed) {
                 className += " revealed";
             }
         }
@@ -23,11 +20,11 @@ export default class TileComponent extends React.Component {
     }
 
     getString() {
-        if (this.state.tile.explored) {
-            if (this.state.tile.bombed) {
+        if (this.props.tile.explored) {
+            if (this.props.tile.bombed) {
                 return "💣"
             } else {
-                let count = this.state.tile.adjacentBombCount();
+                let count = this.props.tile.adjacentBombCount();
                 if (count > 0) {
                     return count.toString();
                 } else {
@@ -35,7 +32,7 @@ export default class TileComponent extends React.Component {
                 }
             }
         } else {
-            if (this.state.tile.flagged) {
+            if (this.props.tile.flagged) {
                 return "🚩";
             }  else {
                 return "";
@@ -47,6 +44,6 @@ export default class TileComponent extends React.Component {
         let flagged = false;
         if(e.altKey) flagged = true;
 
-        this.props.updateGame(this.state.tile, flagged);
+        this.props.updateGame(this.props.tile, flagged);
     }
 }
