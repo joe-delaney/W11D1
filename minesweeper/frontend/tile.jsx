@@ -7,6 +7,6 @@ export default class Tile extends React.Component {
     }
 
     render() {
-        return <h1>T</h1>
+        return <p>T</p>
     }
 }
