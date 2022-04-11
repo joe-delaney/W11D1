@@ -17,6 +17,11 @@ export default class Game extends React.Component {
     }
 
     render() {
-        return <BoardComponent board={this.state.board} updateGame={this.updateGame}/>
+        return <div className="game">
+            <h3 className="title">Minesweeper</h3>
+            <p>Click to explore a tile</p>
+            <p>Alt + click to flag a tile</p>
+            <BoardComponent board={this.state.board} updateGame={this.updateGame}/>
+        </div>
     }
 }

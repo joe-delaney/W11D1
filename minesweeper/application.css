@@ -1,9 +1,45 @@
-.grid {
+.game {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+p {
+    margin:0;
+    font-size: 13px;
+    text-align: center;
+
+}
+
+.title {
+    font-weight: bold;
+    margin: 0;
+
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
 .row {
     display: flex;
+    justify-content: space-between;
+}
+
+.tile {
+    height: 20px;
+    width: 20px;
+    background: lightgray;
+    float: left;
+    border-style: outset;
+    border-width: 2px;
+    line-height: 20px;
+    padding-left: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
 }
